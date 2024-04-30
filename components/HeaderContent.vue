@@ -1,10 +1,10 @@
 <template>
-  <div class="relative mb-24 md:mb-0 bg-black aspect-[3/2] lg:aspect-[25/9]">
+  <div class="relative bg-black aspect-[3/2] lg:aspect-[25/9]">
     <div class="z-0 absolute left-0 lg:left-1/3">
       <img src="assets/images/app.webp" class="w-full h-full object-cover" />
     </div>
     <div
-      class="flex absolute justify-center w-full lg:w-2/3 top-1/3 lg:top-0 lg:h-full z-50 py-10 px-24 bg-gradient-to-t lg:bg-gradient-to-r from-50% from-black to-transparent"
+      class="flex absolute justify-center bottom-0 w-full lg:w-2/3 lg:h-full z-50 py-10 px-24 bg-gradient-to-t lg:bg-gradient-to-r from-50% from-black to-transparent"
     >
       <div
         class="flex flex-col gap-6"
