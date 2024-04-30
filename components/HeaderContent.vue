@@ -24,23 +24,23 @@
           },
         }"
       >
-        <div class="text-5xl line-clamp-2">
+        <div class="xs:text-xl md:text-3xl lg:text-5xl line-clamp-2">
           Rebel Moon — Part Two: The Scargiver
         </div>
-        <div class="flex items-center gap-2">
+        <div class="text-[0.7rem] md:text-[1rem] flex items-center gap-2">
           <StarVote />
           <span class="text-gray-400">469 reviews</span>
           <span class="text-gray-400">2024</span>
           <span class="text-gray-400">3h 24min</span>
         </div>
-        <p>
+        <p class="text-[0.7rem] md:text-[1rem]">
           The rebels gear up for battle against the ruthless forces of the
           Motherworld as unbreakable bonds are forged, heroes emerge — and
           legends are made.
         </p>
         <button class="watchBtn">
           <Icon name="ph:play-light" size="22" />
-          <span> Watch Trailer</span>
+          <span class="text-[0.7rem] md:text-[1rem]"> Watch Trailer</span>
         </button>
       </div>
     </div>
