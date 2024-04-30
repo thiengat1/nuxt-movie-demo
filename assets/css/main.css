@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-mainColor text-white;
+}
+
+.menuIcon {
+  @apply cursor-pointer hover:opacity-80;
+}
+.watchBtn {
+  @apply bg-[#17181A] py-3 px-6 w-max hover:bg-gray-600 flex items-center gap-2;
+}
