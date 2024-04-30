@@ -10,6 +10,7 @@ export default defineNuxtConfig({
   },
   modules: ['nuxt-icon', '@nuxt/image', '@vueuse/motion/nuxt', 'nuxt-swiper'],
   image: {
+    provider: 'netlify',
     dir: 'assets/images',
   },
   runtimeConfig: {
