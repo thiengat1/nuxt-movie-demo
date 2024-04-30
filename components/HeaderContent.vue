@@ -1,7 +1,7 @@
 <template>
   <div class="relative mb-24 md:mb-0 bg-black aspect-[3/2] lg:aspect-[25/9]">
     <div class="z-0 absolute left-0 lg:left-1/3">
-      <NuxtImg src="/app.webp" class="w-full h-full object-cover" />
+      <NuxtImg src="/app.png" class="w-full h-full object-cover" />
     </div>
     <div
       class="flex absolute justify-center w-full lg:w-2/3 top-1/3 lg:top-0 lg:h-full z-50 py-10 px-24 bg-gradient-to-t lg:bg-gradient-to-r from-50% from-black to-transparent"
