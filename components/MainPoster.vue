@@ -34,10 +34,10 @@
         <div class="text-[0.7rem] md:text-[1rem] flex items-center gap-2">
           <StarVote :data="data.vote_average" />
           <span class="text-gray-400">{{ data.vote_count }} reviews</span>
-          <span class="text-gray-400">{{
+          <span class="text-gray-400" v-if="data.id">{{
             data.release_date?.substring(0, 4)
           }}</span>
-          <span class="text-gray-400">{{
+          <span class="text-gray-400" v-if="data.id">{{
             `${convertToHours(data.runtime).hours}h ${
               convertToHours(data.runtime).minutes
             }min`

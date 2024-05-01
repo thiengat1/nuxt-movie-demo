@@ -16,7 +16,7 @@
       color="white"
     />
 
-    <span class="ml-2">6.1</span>
+    <span class="ml-2">{{ data.toFixed(1) }}</span>
   </div>
 </template>
 
