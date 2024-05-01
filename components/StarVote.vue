@@ -5,7 +5,7 @@
       :key="`startVote${item}`"
       name="material-symbols-light:star"
       size="24"
-      color="grey"
+      color="white"
     />
 
     <Icon
@@ -13,7 +13,7 @@
       :key="`startEmpty${item2}`"
       name="material-symbols-light:star"
       size="24"
-      color="white"
+      color="grey"
     />
 
     <span class="ml-2">{{ data.toFixed(1) }}</span>
