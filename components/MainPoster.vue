@@ -10,7 +10,7 @@
       class="flex absolute justify-center bottom-0 w-full lg:w-2/3 lg:h-full z-50 py-10 px-24 bg-gradient-to-t lg:bg-gradient-to-r from-50% from-black to-transparent"
     >
       <div
-        class="flex flex-col gap-6"
+        class="flex flex-col gap-2 sm:gap-4 md:gap-6"
         v-motion="{
           initial: {
             opacity: 0,
