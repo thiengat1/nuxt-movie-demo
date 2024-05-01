@@ -5,10 +5,11 @@
       :breakpoints="{
         200: { slidesPerView: 1 },
         400: { slidesPerView: 2 },
-        700: { slidesPerView: 3 },
-        1000: { slidesPerView: 4 },
-        1300: { slidesPerView: 5 },
-        1600: { slidesPerView: 6 },
+        640: { slidesPerView: 3 },
+        768: { slidesPerView: 3 },
+        1150: { slidesPerView: 4 },
+        1280: { slidesPerView: 5 },
+        1536: { slidesPerView: 6 },
       }"
       :loop="false"
       :effect="''"
