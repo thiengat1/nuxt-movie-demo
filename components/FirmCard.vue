@@ -1,7 +1,7 @@
 <template>
   <div class="flex gap-2 flex-col m-2">
     <div
-      class="w-40 md:w-60 border-2 border-gray-500 border-solid hover:scale-105 hover:transition-all hover:duration-500 hover:cursor-pointer"
+      class="w-40 md:w-60 border-2 border-gray-500 border-solid hover:scale-105 transition-all duration-500 hover:cursor-pointer"
     >
       <img
         :src="`https://movies-proxy.vercel.app/ipx/f_webp&s_800x1200/tmdb/${data.poster_path}`"
