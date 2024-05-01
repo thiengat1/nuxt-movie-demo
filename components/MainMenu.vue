@@ -5,20 +5,20 @@
     <div
       class="h-full flex py-2 lg:py-0 lg:flex-col justify-evenly items-center gap-12"
     >
-      <Icon class="menuIcon" name="ic:round-home" color="grey" size="40" />
+      <Icon class="menuIcon" name="ic:round-home" color="white" size="40" />
       <Icon
         class="menuIcon"
         name="pixelarticons:movie"
-        color="grey"
+        color="white"
         size="40"
       />
       <Icon
         class="menuIcon"
         name="pepicons-pencil:television"
-        color="grey"
+        color="white"
         size="40"
       />
-      <Icon class="menuIcon" name="ic:outline-search" color="grey" size="40" />
+      <Icon class="menuIcon" name="ic:outline-search" color="white" size="40" />
     </div>
   </div>
 </template>
