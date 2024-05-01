@@ -6,10 +6,17 @@
         Explore more
       </div>
     </div>
-    <categories-slider />
+    <categories-slider :data="data" />
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup>
+const props = defineProps({
+  data: {
+    type: Object,
+    default: () => [],
+  },
+});
+</script>
 
 <style scoped></style>

@@ -26,14 +26,21 @@
         },
       }"
     >
-      <SwiperSlide v-for="slide in 10" :key="slide">
-        <FirmCard />
+      <SwiperSlide v-for="slide in data" :key="slide.id">
+        <FirmCard :data="slide" />
       </SwiperSlide>
       <swiper-control />
     </Swiper>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup>
+const props = defineProps({
+  data: {
+    type: Object,
+    default: () => [],
+  },
+});
+</script>
 
 <style scoped></style>
