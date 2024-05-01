@@ -4,7 +4,7 @@
       v-for="item in vote"
       :key="`startVote${item}`"
       name="material-symbols-light:star"
-      size="28"
+      size="24"
       color="grey"
     />
 
@@ -12,7 +12,7 @@
       v-for="item2 in voteEmpty"
       :key="`startEmpty${item2}`"
       name="material-symbols-light:star"
-      size="28"
+      size="24"
       color="white"
     />
 
