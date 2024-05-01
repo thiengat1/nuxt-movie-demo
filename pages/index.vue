@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MainPoster :data="detail" />
+    <MainPoster :movies="movies.results" />
     <FirmCategories title="Popular Movies" :data="movies.results" />
     <FirmCategories title="Popular TV Shows" :data="tvShow.results" />
   </div>
@@ -15,18 +15,6 @@ const { data: movies, pending } = useFetch(
 const { data: tvShow } = useFetch(
   'https://movies-proxy.vercel.app/tmdb/tv/popular?page=1&language=en'
 );
-onMounted(() => {
-  let delayGet = setInterval(async () => {
-    if (movies.value.results) {
-      clearInterval(delayGet);
-      const res = await useFetch(
-        `https://movies-proxy.vercel.app/tmdb/movie/${movies.value?.results[0].id}?append_to_response=videos,credits,images,external_ids,release_dates,combined_credits&include_image_language=en&language=en`,
-        { cache: true }
-      );
-      detail.value = res.data.value;
-    }
-  });
-});
 </script>
 
 <style scoped></style>

@@ -13,16 +13,15 @@
         class="flex flex-col gap-2 sm:gap-4 md:gap-6"
         v-motion="{
           initial: {
+            y: 100,
             opacity: 0,
           },
           enter: {
             opacity: 1,
+            y: 0,
             transition: {
-              translate: {
-                duration: 2000,
-              },
               opacity: {
-                duration: 2000,
+                duration: 1000,
               },
             },
           },
@@ -34,10 +33,10 @@
         <div class="text-[0.7rem] md:text-[1rem] flex items-center gap-2">
           <StarVote :data="data.vote_average" />
           <span class="text-gray-400">{{ data.vote_count }} reviews</span>
-          <span class="text-gray-400" v-if="data.id">{{
+          <span class="text-gray-400">{{
             data.release_date?.substring(0, 4)
           }}</span>
-          <span class="text-gray-400" v-if="data.id">{{
+          <span class="text-gray-400">{{
             `${convertToHours(data.runtime).hours}h ${
               convertToHours(data.runtime).minutes
             }min`
@@ -46,7 +45,7 @@
         <p class="text-[0.7rem] md:text-[1rem]">
           {{ data.overview }}
         </p>
-        <button class="watchBtn" v-if="data.id">
+        <button class="watchBtn">
           <Icon name="ph:play-light" size="22" />
           <span class="text-[0.7rem] md:text-[1rem]"> Watch Trailer</span>
         </button>
@@ -56,12 +55,18 @@
 </template>
 
 <script setup>
+import { watch, ref } from 'vue';
 const props = defineProps({
-  data: {
+  movies: {
     type: Object,
-    default: () => {},
+    default: () => [],
   },
 });
+
+const { data } = useFetch(
+  `https://movies-proxy.vercel.app/tmdb/movie/${props.movies[0].id}?append_to_response=videos,credits,images,external_ids,release_dates,combined_credits&include_image_language=en&language=en`,
+  { cache: true }
+);
 
 function convertToHours(time) {
   var hours = Math.floor(time / 60);

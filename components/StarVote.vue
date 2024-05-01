@@ -30,7 +30,6 @@ const props = defineProps({
 });
 
 const vote = computed(() => {
-  console.log('Math.round(props.data / 2)', Math.round(props.data / 2));
   if (props.data) {
     return Math.round(props.data / 2);
   }
