@@ -71,7 +71,6 @@ const { data } = useFetch(
 function convertToHours(time) {
   var hours = Math.floor(time / 60);
   var minutes = time % 60;
-  console.log('hours', hours);
   return { hours: hours, minutes: minutes };
 }
 </script>
