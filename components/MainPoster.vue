@@ -30,7 +30,10 @@
         <div class="xs:text-xl md:text-3xl lg:text-5xl line-clamp-2">
           {{ detail?.title || detail?.name }}
         </div>
-        <div class="text-[0.7rem] md:text-[1rem] flex items-center gap-2">
+        <div
+          v-if="detail?.id"
+          class="text-[0.7rem] md:text-[1rem] flex items-center gap-2"
+        >
           <StarVote :data="detail?.vote_average" />
           <span class="text-gray-400">{{ detail?.vote_count }} reviews</span>
           <span class="text-gray-400">{{
@@ -45,7 +48,7 @@
         <p class="text-[0.7rem] md:text-[1rem]">
           {{ detail?.overview }}
         </p>
-        <button class="watchBtn">
+        <button class="watchBtn" v-if="detail?.id">
           <Icon name="ph:play-light" size="22" />
           <span class="text-[0.7rem] md:text-[1rem]"> Watch Trailer</span>
         </button>
@@ -66,13 +69,26 @@ const props = defineProps({
     default: 'movie',
   },
 });
+const detail = ref({});
 
-const link =
-  props.type === 'tv'
-    ? `https://movies-proxy.vercel.app/tmdb/tv/${props.data?.[0]?.id}?append_to_response=videos,credits,images,external_ids,release_dates,combined_credits&include_image_language=en&language=en`
-    : `https://movies-proxy.vercel.app/tmdb/movie/${props.data?.[0]?.id}?append_to_response=videos,credits,images,external_ids,release_dates,combined_credits&include_image_language=en&language=en`;
+watch(
+  () => props.data,
+  async (value) => {
+    console.log('value', value);
+    if (value) {
+      const link =
+        props.type === 'tv'
+          ? `https://movies-proxy.vercel.app/tmdb/tv/${value?.[0]?.id}?append_to_response=videos,credits,images,external_ids,release_dates,combined_credits&include_image_language=en&language=en`
+          : `https://movies-proxy.vercel.app/tmdb/movie/${value?.[0]?.id}?append_to_response=videos,credits,images,external_ids,release_dates,combined_credits&include_image_language=en&language=en`;
 
-const { data: detail } = useFetch(link, { cache: true });
+      const res = await useFetch(link, { cache: true });
+      detail.value = res.data?.value;
+    }
+  },
+  {
+    immediate: true,
+  }
+);
 
 function convertToHours(time) {
   var hours = Math.floor(time / 60);
