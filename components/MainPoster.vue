@@ -2,7 +2,7 @@
   <div class="relative bg-black aspect-[3/2] lg:aspect-[25/9]">
     <div class="z-0 absolute left-0 lg:left-1/3">
       <img
-        :src="`https://movies-proxy.vercel.app/ipx/f_webp&s_2440x1318/tmdb/${data.backdrop_path}`"
+        :src="`https://movies-proxy.vercel.app/ipx/f_webp&s_2440x1318/tmdb/${detail?.backdrop_path}`"
         class="w-full h-full object-cover"
       />
     </div>
@@ -28,22 +28,22 @@
         }"
       >
         <div class="xs:text-xl md:text-3xl lg:text-5xl line-clamp-2">
-          {{ data.title }}
+          {{ detail?.title || detail?.name }}
         </div>
         <div class="text-[0.7rem] md:text-[1rem] flex items-center gap-2">
-          <StarVote :data="data.vote_average" />
-          <span class="text-gray-400">{{ data.vote_count }} reviews</span>
+          <StarVote :data="detail?.vote_average" />
+          <span class="text-gray-400">{{ detail?.vote_count }} reviews</span>
           <span class="text-gray-400">{{
-            data.release_date?.substring(0, 4)
+            detail?.release_date || detail?.last_air_date?.substring(0, 4)
           }}</span>
-          <span class="text-gray-400">{{
-            `${convertToHours(data.runtime).hours}h ${
-              convertToHours(data.runtime).minutes
+          <span v-if="type === 'movie'" class="text-gray-400">{{
+            `${convertToHours(detail?.runtime).hours}h ${
+              convertToHours(detail?.runtime).minutes
             }min`
           }}</span>
         </div>
         <p class="text-[0.7rem] md:text-[1rem]">
-          {{ data.overview }}
+          {{ detail?.overview }}
         </p>
         <button class="watchBtn">
           <Icon name="ph:play-light" size="22" />
@@ -57,16 +57,22 @@
 <script setup>
 import { watch, ref } from 'vue';
 const props = defineProps({
-  movies: {
+  data: {
     type: Object,
     default: () => [],
   },
+  type: {
+    type: String,
+    default: 'movie',
+  },
 });
 
-const { data } = useFetch(
-  `https://movies-proxy.vercel.app/tmdb/movie/${props.movies[0].id}?append_to_response=videos,credits,images,external_ids,release_dates,combined_credits&include_image_language=en&language=en`,
-  { cache: true }
-);
+const link =
+  props.type === 'tv'
+    ? `https://movies-proxy.vercel.app/tmdb/tv/${props.data?.[0]?.id}?append_to_response=videos,credits,images,external_ids,release_dates,combined_credits&include_image_language=en&language=en`
+    : `https://movies-proxy.vercel.app/tmdb/movie/${props.data?.[0]?.id}?append_to_response=videos,credits,images,external_ids,release_dates,combined_credits&include_image_language=en&language=en`;
+
+const { data: detail } = useFetch(link, { cache: true });
 
 function convertToHours(time) {
   var hours = Math.floor(time / 60);

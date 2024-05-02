@@ -13,6 +13,7 @@
     "@nuxt/image": "^1.6.0",
     "@vueuse/motion": "^2.1.0",
     "nuxt": "^3.11.2",
+    "nuxt-rating": "^0.0.15",
     "nuxt-swiper": "^1.2.2",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"

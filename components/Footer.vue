@@ -1,6 +1,6 @@
 <template>
   <div
-    class="p-4 flex justify-center items-center border-t border-solid border-gray-400 text-gray-400 mb-[80px] lg:mb-0"
+    class="p-4 flex justify-center items-center border-t border-solid border-gray-400 text-gray-400 mb-[60px] lg:mb-0"
   >
     <div>©Copyright 2024 design by Lewis</div>
   </div>

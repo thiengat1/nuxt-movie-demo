@@ -1,5 +1,5 @@
 <template>
-  <div class="relative top-0 p-10">
+  <div class="relative top-0 p-5">
     <div class="flex justify-between items-center">
       <div class="text-2xl">{{ title }}</div>
       <div class="text-gray-400 cursor-pointer hover:opacity-80">

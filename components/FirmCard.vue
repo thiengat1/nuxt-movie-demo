@@ -17,7 +17,7 @@
 const props = defineProps({
   data: {
     type: Object,
-    default: () => [],
+    default: () => {},
   },
 });
 const link =

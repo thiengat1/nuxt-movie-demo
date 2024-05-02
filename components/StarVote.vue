@@ -24,7 +24,7 @@
 import { computed } from 'vue';
 const props = defineProps({
   data: {
-    type: Object,
+    type: Number,
     default: () => 0,
   },
 });

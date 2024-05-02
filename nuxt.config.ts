@@ -8,7 +8,13 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  modules: ['nuxt-icon', '@nuxt/image', '@vueuse/motion/nuxt', 'nuxt-swiper'],
+  modules: [
+    'nuxt-icon',
+    '@nuxt/image',
+    '@vueuse/motion/nuxt',
+    'nuxt-swiper',
+    'nuxt-rating',
+  ],
   image: {
     provider: 'netlify',
     dir: 'assets/images',
