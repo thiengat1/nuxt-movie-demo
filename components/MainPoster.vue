@@ -37,7 +37,8 @@
           <StarVote :data="detail?.vote_average" />
           <span class="text-gray-400">{{ detail?.vote_count }} reviews</span>
           <span class="text-gray-400">{{
-            detail?.release_date || detail?.last_air_date?.substring(0, 4)
+            detail?.release_date.substring(0, 4) ||
+            detail?.last_air_date?.substring(0, 4)
           }}</span>
           <span v-if="type === 'movie'" class="text-gray-400">{{
             `${convertToHours(detail?.runtime).hours}h ${
