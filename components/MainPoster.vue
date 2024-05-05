@@ -7,7 +7,7 @@
       />
     </div>
     <div
-      class="flex absolute justify-center bottom-0 w-full lg:w-2/3 lg:h-full z-50 py-10 px-24 bg-gradient-to-t lg:bg-gradient-to-r from-50% from-black to-transparent"
+      class="flex absolute justify-center bottom-0 w-full lg:w-2/3 lg:h-full z-50 py-5 lg:py-10 px-10 lg:px-24 bg-gradient-to-t lg:bg-gradient-to-r from-50% from-black to-transparent"
     >
       <div
         class="flex flex-col gap-2 sm:gap-4 md:gap-6"
@@ -74,8 +74,7 @@ const detail = ref({});
 watch(
   () => props.data,
   async (value) => {
-    console.log('value', value);
-    if (value) {
+    if (value.length) {
       const link =
         props.type === 'tv'
           ? `https://movies-proxy.vercel.app/tmdb/tv/${value?.[0]?.id}?append_to_response=videos,credits,images,external_ids,release_dates,combined_credits&include_image_language=en&language=en`
@@ -91,6 +90,9 @@ watch(
 );
 
 function convertToHours(time) {
+  if (!time) {
+    return {};
+  }
   var hours = Math.floor(time / 60);
   var minutes = time % 60;
   return { hours: hours, minutes: minutes };

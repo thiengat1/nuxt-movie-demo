@@ -29,7 +29,7 @@ const menus = [
   { id: 1, name: 'home', icon: 'ic:round-home', link: '/' },
   { id: 2, name: 'movie', icon: 'pixelarticons:movie', link: '/movie' },
   { id: 3, name: 'tv', icon: 'pepicons-pencil:television', link: '/tv' },
-  { id: 4, name: 'search', icon: 'ic:outline-search', link: '/' },
+  { id: 4, name: 'search', icon: 'ic:outline-search', link: '/search' },
 ];
 function handleMenuClick(id) {
   selected.value = id;

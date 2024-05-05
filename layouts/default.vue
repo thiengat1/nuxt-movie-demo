@@ -1,7 +1,7 @@
 <template>
   <div>
     <MainMenu />
-    <div class="lg:ml-[80px]">
+    <div class="lg:ml-[80px] mb-0 lg:mb-[80px]">
       <slot />
     </div>
     <Footer />
