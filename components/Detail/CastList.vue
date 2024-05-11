@@ -1,15 +1,16 @@
 <template>
-  <div class="py-4">
+  <div class="p-4">
+    <div class="text-2xl mb-4">Cast</div>
     <Swiper
       :modules="[SwiperAutoplay, SwiperEffectCreative]"
       :breakpoints="{
-        200: { slidesPerView: 1 },
-        400: { slidesPerView: 2 },
-        640: { slidesPerView: 3 },
-        768: { slidesPerView: 3 },
-        1150: { slidesPerView: 4 },
-        1280: { slidesPerView: 5 },
-        1536: { slidesPerView: 6 },
+        200: { slidesPerView: 2 },
+        400: { slidesPerView: 3 },
+        640: { slidesPerView: 4 },
+        768: { slidesPerView: 5 },
+        1150: { slidesPerView: 6 },
+        1280: { slidesPerView: 7 },
+        1536: { slidesPerView: 8 },
       }"
       :loop="false"
       :effect="''"
@@ -28,7 +29,7 @@
       }"
     >
       <SwiperSlide v-for="slide in data" :key="slide.id">
-        <FirmCard :data="slide" :type="type" />
+        <CastActor :data="slide" />
       </SwiperSlide>
       <swiper-control />
     </Swiper>
@@ -36,14 +37,11 @@
 </template>
 
 <script setup>
+import CastActor from './CastActor.vue';
 const props = defineProps({
   data: {
     type: Object,
     default: () => [],
-  },
-  type: {
-    type: String,
-    default: 'movie',
   },
 });
 </script>

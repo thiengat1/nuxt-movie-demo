@@ -12,3 +12,6 @@ body {
 .watchBtn {
   @apply bg-[#17181A] py-3 px-6 w-max hover:bg-gray-600 flex items-center gap-2;
 }
+.tab {
+  @apply relative after:absolute after:-bottom-2 after:left-0 after:w-full after:h-0.5 after:bg-white cursor-pointer;
+}

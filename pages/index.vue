@@ -1,8 +1,16 @@
 <template>
   <div>
-    <MainPoster :data="movies?.results" type="movie" />
-    <FirmCategories title="Popular Movies" :data="movies?.results" />
-    <FirmCategories title="Popular TV Shows" :data="tvShow?.results" />
+    <MainPoster :data="movies?.results" type="movie" :isLoadData="true" />
+    <FirmCategories
+      title="Popular Movies"
+      :data="movies?.results"
+      type="movie"
+    />
+    <FirmCategories
+      title="Popular TV Shows"
+      :data="tvShow?.results"
+      type="tv"
+    />
   </div>
 </template>
 

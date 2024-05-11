@@ -16,6 +16,7 @@
     "nuxt-rating": "^0.0.15",
     "nuxt-swiper": "^1.2.2",
     "vue": "^3.4.21",
+    "vue-lite-youtube-embed": "^1.2.4",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {

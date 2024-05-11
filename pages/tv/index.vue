@@ -1,11 +1,20 @@
 <template>
   <div>
-    <MainPoster :data="popularShow?.results" type="tv" />
-    <FirmCategories title="Popular TV Shows" :data="popularShow?.results" />
-    <FirmCategories title="Top Rated TV Shows" :data="topRates?.results" />
+    <MainPoster :data="popularShow?.results" type="tv" :isLoadData="true" />
+    <FirmCategories
+      title="Popular TV Shows"
+      :data="popularShow?.results"
+      type="tv"
+    />
+    <FirmCategories
+      title="Top Rated TV Shows"
+      :data="topRates?.results"
+      type="tv"
+    />
     <FirmCategories
       title="TV Shows Airing Today"
       :data="airingToday?.results"
+      type="tv"
     />
   </div>
 </template>

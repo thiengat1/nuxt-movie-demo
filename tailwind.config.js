@@ -12,6 +12,7 @@ export default {
     extend: {
       colors: {
         mainColor: '#111111',
+        bgRgba: 'rgba(0,0,0,0.6)',
       },
     },
   },

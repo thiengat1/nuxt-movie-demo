@@ -1,10 +1,26 @@
 <template>
   <div>
-    <MainPoster :data="movies?.results" type="movie" />
-    <FirmCategories title="Popular Movies" :data="movies?.results" />
-    <FirmCategories title="Top Rated Movies" :data="topRates?.results" />
-    <FirmCategories title="Upcoming Movies" :data="upComings?.results" />
-    <FirmCategories title="Now Playing Movies" :data="nowPlaying?.results" />
+    <MainPoster :data="movies?.results" type="movie" :isLoadData="true" />
+    <FirmCategories
+      title="Popular Movies"
+      :data="movies?.results"
+      type="movie"
+    />
+    <FirmCategories
+      title="Top Rated Movies"
+      :data="topRates?.results"
+      type="movie"
+    />
+    <FirmCategories
+      title="Upcoming Movies"
+      :data="upComings?.results"
+      type="movie"
+    />
+    <FirmCategories
+      title="Now Playing Movies"
+      :data="nowPlaying?.results"
+      type="movie"
+    />
   </div>
 </template>
 

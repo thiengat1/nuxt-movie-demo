@@ -2,6 +2,7 @@
   <div class="relative bg-black aspect-[3/2] lg:aspect-[25/9]">
     <div class="z-0 absolute left-0 lg:left-1/3">
       <img
+        v-if="detail?.id"
         :src="`https://movies-proxy.vercel.app/ipx/f_webp&s_2440x1318/tmdb/${detail?.backdrop_path}`"
         class="w-full h-full object-cover"
       />
@@ -10,6 +11,7 @@
       class="flex absolute justify-center bottom-0 w-full lg:w-2/3 lg:h-full z-50 py-5 lg:py-10 px-10 lg:px-24 bg-gradient-to-t lg:bg-gradient-to-r from-50% from-black to-transparent"
     >
       <div
+        v-if="detail?.id"
         class="flex flex-col gap-2 sm:gap-4 md:gap-6"
         v-motion="{
           initial: {
@@ -49,40 +51,89 @@
         <p class="text-[0.7rem] md:text-[1rem]">
           {{ detail?.overview }}
         </p>
-        <button class="watchBtn" v-if="detail?.id">
+        <button
+          class="watchBtn"
+          v-if="detail?.id && type === 'movie'"
+          @click="handleOpenTrailer"
+        >
           <Icon name="ph:play-light" size="22" />
           <span class="text-[0.7rem] md:text-[1rem]"> Watch Trailer</span>
         </button>
       </div>
     </div>
+    <TrailerWatch
+      v-if="isOpen"
+      @close="handleCloseTrailer"
+      :videoInfo="videoInfo"
+    />
   </div>
 </template>
 
 <script setup>
-import { watch, ref } from 'vue';
+import { watch, ref, onMounted } from 'vue';
 const props = defineProps({
   data: {
     type: Object,
-    default: () => [],
+    default: () => {},
   },
   type: {
     type: String,
     default: 'movie',
   },
+  currentData: {
+    type: Object,
+    default: () => {},
+  },
+  isLoadData: {
+    type: Boolean,
+    default: () => false,
+  },
 });
 const detail = ref({});
+const isOpen = ref(false);
+
+const videoInfo = computed(() => {
+  return detail.value?.videos.results?.find((item) => item.type === 'Trailer');
+});
+
+onMounted(() => {
+  detail.value = props.currentData;
+});
+
+function handleLoadData() {
+  async function checkLoadData() {
+    const delay = 50;
+    setTimeout(async () => {
+      if (props.data.length && props.isLoadData) {
+        const link =
+          props.type === 'tv'
+            ? `https://movies-proxy.vercel.app/tmdb/tv/${props.data?.[0]?.id}?append_to_response=videos,credits,images,external_ids,release_dates,combined_credits&include_image_language=en&language=en`
+            : `https://movies-proxy.vercel.app/tmdb/movie/${props.data?.[0]?.id}?append_to_response=videos,credits,images,external_ids,release_dates,combined_credits&include_image_language=en&language=en`;
+        const res = await useFetch(link, { cache: true });
+        detail.value = res.data?.value;
+      }
+    }, delay);
+  }
+  checkLoadData();
+}
 
 watch(
   () => props.data,
   async (value) => {
-    if (value.length) {
-      const link =
-        props.type === 'tv'
-          ? `https://movies-proxy.vercel.app/tmdb/tv/${value?.[0]?.id}?append_to_response=videos,credits,images,external_ids,release_dates,combined_credits&include_image_language=en&language=en`
-          : `https://movies-proxy.vercel.app/tmdb/movie/${value?.[0]?.id}?append_to_response=videos,credits,images,external_ids,release_dates,combined_credits&include_image_language=en&language=en`;
+    if (value) {
+      handleLoadData();
+    }
+  },
+  {
+    immediate: true,
+  }
+);
 
-      const res = await useFetch(link, { cache: true });
-      detail.value = res.data?.value;
+watch(
+  () => props.currentData,
+  async (value) => {
+    if (value) {
+      detail.value = props.currentData;
     }
   },
   {
@@ -97,6 +148,13 @@ function convertToHours(time) {
   var hours = Math.floor(time / 60);
   var minutes = time % 60;
   return { hours: hours, minutes: minutes };
+}
+
+function handleOpenTrailer() {
+  isOpen.value = true;
+}
+function handleCloseTrailer() {
+  isOpen.value = false;
 }
 </script>
 

@@ -6,7 +6,7 @@
         Explore more
       </div>
     </div>
-    <categories-slider :data="data" />
+    <categories-slider :data="data" :type="type" />
   </div>
 </template>
 
@@ -19,6 +19,10 @@ const props = defineProps({
   title: {
     type: String,
     default: '',
+  },
+  type: {
+    type: String,
+    default: 'movie',
   },
 });
 </script>
