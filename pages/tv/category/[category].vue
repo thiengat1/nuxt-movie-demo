@@ -73,7 +73,7 @@ async function loadMore() {
     currentPage.value++;
   } else {
     // If no more data is available, mark all data as loaded
-    allDataLoaded = true;
+    allDataLoaded.value = true;
   }
 }
 </script>
