@@ -6,7 +6,6 @@
 
 <script setup>
 const { id } = useRoute().params;
-console.log('id', id);
 const props = defineProps({
   type: {
     type: String,
