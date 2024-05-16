@@ -70,7 +70,6 @@
 </template>
 
 <script setup>
-import { watch, ref, onMounted } from 'vue';
 const props = defineProps({
   data: {
     type: Object,
@@ -97,7 +96,10 @@ const videoInfo = computed(() => {
 });
 
 onMounted(() => {
-  detail.value = props.currentData;
+  nextTick(() => {
+    detail.value = props.currentData;
+    handleLoadData();
+  });
 });
 
 function handleLoadData() {
@@ -116,30 +118,6 @@ function handleLoadData() {
   }
   checkLoadData();
 }
-
-watch(
-  () => props.data,
-  async (value) => {
-    if (value) {
-      handleLoadData();
-    }
-  },
-  {
-    immediate: true,
-  }
-);
-
-watch(
-  () => props.currentData,
-  async (value) => {
-    if (value) {
-      detail.value = props.currentData;
-    }
-  },
-  {
-    immediate: true,
-  }
-);
 
 function convertToHours(time) {
   if (!time) {

@@ -18,7 +18,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
 const selected = ref(1);
 const menus = [
   { id: 1, name: 'home', icon: 'ic:round-home', link: '/' },

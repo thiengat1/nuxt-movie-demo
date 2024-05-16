@@ -9,7 +9,6 @@
 </template>
 
 <script setup>
-import { watch, ref } from 'vue';
 const { id } = useRoute().params;
 
 const props = defineProps({

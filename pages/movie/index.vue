@@ -28,7 +28,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 const { data: movies } = useFetch(
   'https://movies-proxy.vercel.app/tmdb/movie/popular?page=1&language=en'
 );

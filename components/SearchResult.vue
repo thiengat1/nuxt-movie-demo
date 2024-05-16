@@ -14,7 +14,6 @@
 </template>
 
 <script setup>
-import { ref, watch, onMounted, onUnmounted } from 'vue';
 const props = defineProps({
   searchKey: {
     type: String,

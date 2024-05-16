@@ -21,7 +21,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
 import _ from 'lodash';
 const searchKey = ref();
 

@@ -19,8 +19,8 @@
       size="40"
       name="ph:play-light"
     />
+    <TrailerWatch v-if="isOpen" @close="handleCloseTrailer" :videoInfo="data" />
   </div>
-  <TrailerWatch v-if="isOpen" @close="handleCloseTrailer" :videoInfo="data" />
 </template>
 
 <script setup>

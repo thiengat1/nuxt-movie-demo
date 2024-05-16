@@ -5,7 +5,6 @@
 </template>
 
 <script setup>
-import { watch, ref } from 'vue';
 const { id } = useRoute().params;
 console.log('id', id);
 const props = defineProps({
