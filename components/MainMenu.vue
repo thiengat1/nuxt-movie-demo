@@ -11,12 +11,7 @@
         :to="menu.link"
         @click="() => handleMenuClick(menu.id)"
       >
-        <Icon
-          class="menuIcon"
-          :name="menu.icon"
-          :color="selected === menu.id ? 'white' : 'grey'"
-          size="32"
-        />
+        <Icon class="menuIcon" :name="menu.icon" size="32" />
       </NuxtLink>
     </div>
   </div>
@@ -36,4 +31,8 @@ function handleMenuClick(id) {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.router-link-exact-active {
+  color: #12b488;
+}
+</style>

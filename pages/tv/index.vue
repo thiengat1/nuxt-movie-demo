@@ -5,16 +5,19 @@
       title="Popular TV Shows"
       :data="popularShow?.results"
       type="tv"
+      category="popular"
     />
     <FirmCategories
       title="Top Rated TV Shows"
       :data="topRates?.results"
       type="tv"
+      category="top_rated"
     />
     <FirmCategories
       title="TV Shows Airing Today"
       :data="airingToday?.results"
       type="tv"
+      category="airing_today"
     />
   </div>
 </template>

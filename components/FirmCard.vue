@@ -29,10 +29,9 @@ const link =
   'https://movies-proxy.vercel.app/ipx/f_webp&s_800x1200/tmdb/cxevDYdeFkiixRShbObdwAHBZry.jpg';
 
 function handleGoToDetail() {
-  console.log('router.currentRoute.value?.path', router.currentRoute.value);
-  console.log('router', router);
-  if (router.currentRoute.value?.path.includes(props.type)) {
-    router.replace({ path: `${props.data.id}` });
+  const { id } = useRoute().params;
+  if (router.currentRoute.value?.path.includes(props.type) && id) {
+    router.push({ path: `${props.data.id}` });
   } else {
     router.push({ path: `${props.type}/${props.data.id}` });
   }

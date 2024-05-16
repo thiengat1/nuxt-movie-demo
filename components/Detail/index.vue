@@ -21,6 +21,7 @@
       title="More like this"
       :data="recommendation"
       :type="type"
+      category="more-like"
     />
   </div>
 </template>

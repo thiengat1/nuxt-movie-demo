@@ -5,21 +5,25 @@
       title="Popular Movies"
       :data="movies?.results"
       type="movie"
+      category="popular"
     />
     <FirmCategories
       title="Top Rated Movies"
       :data="topRates?.results"
       type="movie"
+      category="top_rated"
     />
     <FirmCategories
       title="Upcoming Movies"
       :data="upComings?.results"
       type="movie"
+      category="upcoming"
     />
     <FirmCategories
       title="Now Playing Movies"
       :data="nowPlaying?.results"
       type="movie"
+      category="now_playing"
     />
   </div>
 </template>

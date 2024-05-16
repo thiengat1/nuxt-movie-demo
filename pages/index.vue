@@ -5,11 +5,13 @@
       title="Popular Movies"
       :data="movies?.results"
       type="movie"
+      category="popular"
     />
     <FirmCategories
       title="Popular TV Shows"
       :data="tvShow?.results"
       type="tv"
+      category="popular"
     />
   </div>
 </template>
