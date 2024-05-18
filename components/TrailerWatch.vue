@@ -2,7 +2,9 @@
   <div
     class="fixed w-full h-full top-0 left-0 bottom-0 right-0 z-[2000] bg-bgRgba flex justify-center"
   >
-    <div class="w-[70%] h-[30%] relative top-4 shadow-md bg-mainColor">
+    <div
+      class="w-[90%] lg:w-[70%] h-[30%] relative top-4 shadow-md bg-mainColor"
+    >
       <div class="p-2 text-center text-xl">{{ videoInfo.name }}</div>
       <LiteYouTubeEmbed :id="videoInfo.key" title="123" />
       <Icon
@@ -23,8 +25,8 @@ import 'vue-lite-youtube-embed/style.css';
 const emits = defineEmits(['close']);
 const props = defineProps({
   videoInfo: {
-    type: String,
-    default: () => '',
+    type: Object,
+    default: () => {},
   },
 });
 
