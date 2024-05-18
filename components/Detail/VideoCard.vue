@@ -38,7 +38,6 @@ function handleOpenTrailer() {
   isOpen.value = true;
 }
 function handleCloseTrailer() {
-  console.log(3333);
   isOpen.value = false;
 }
 </script>
