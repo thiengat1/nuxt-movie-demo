@@ -3,8 +3,8 @@
     <Swiper
       :modules="[SwiperAutoplay, SwiperEffectCreative]"
       :breakpoints="{
-        200: { slidesPerView: 1 },
-        400: { slidesPerView: 2 },
+        150: { slidesPerView: 1 },
+        250: { slidesPerView: 2 },
         640: { slidesPerView: 3 },
         768: { slidesPerView: 3 },
         1150: { slidesPerView: 4 },
