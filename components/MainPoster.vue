@@ -105,24 +105,23 @@ function handleLoadData() {
   async function checkLoadData() {
     const delay = 50;
 
-    setTimeout(async () => {
-      if (props.data?.length && props.isLoadData) {
-        const link =
-          props.type === 'tv'
-            ? `https://movies-proxy.vercel.app/tmdb/tv/${props.data?.[0]?.id}?append_to_response=videos,credits,images,external_ids,release_dates,combined_credits&include_image_language=en&language=en`
-            : `https://movies-proxy.vercel.app/tmdb/movie/${props.data?.[0]?.id}?append_to_response=videos,credits,images,external_ids,release_dates,combined_credits&include_image_language=en&language=en`;
-        const res = await useFetch(link, { cache: true });
-        detail.value = res.data?.value;
-
+    if (props.data?.length && props.isLoadData) {
+      const link =
+        props.type === 'tv'
+          ? `https://movies-proxy.vercel.app/tmdb/tv/${props.data?.[0]?.id}?append_to_response=videos,credits,images,external_ids,release_dates,combined_credits&include_image_language=en&language=en`
+          : `https://movies-proxy.vercel.app/tmdb/movie/${props.data?.[0]?.id}?append_to_response=videos,credits,images,external_ids,release_dates,combined_credits&include_image_language=en&language=en`;
+      const res = await useFetch(link, { cache: true });
+      detail.value = res.data?.value;
+      return;
+    } else {
+      if (props.currentData) {
+        detail.value = props.currentData;
         return;
-      } else {
-        if (props.currentData) {
-          detail.value = props.currentData;
-          return;
-        }
-        checkLoadData();
       }
-    }, delay);
+      setTimeout(() => {
+        checkLoadData();
+      }, delay);
+    }
   }
   checkLoadData();
 }

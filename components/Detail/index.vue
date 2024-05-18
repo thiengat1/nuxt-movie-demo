@@ -1,6 +1,6 @@
 <template>
   <div class="relative top-0">
-    <main-poster :currentData="data" />
+    <main-poster :currentData="data" :type="type" />
     <div class="flex justify-center gap-8 mt-8 text-2xl mb-12">
       <div
         v-for="tab in tabs"
@@ -13,10 +13,10 @@
         {{ tab.name }}
       </div>
     </div>
-    <OverView :data="data" />
+    <OverView v-if="tabActive === 1" :data="data" />
     <VideoList v-if="tabActive === 2" :data="data?.videos?.results" />
     <PhotosMain v-if="tabActive === 3" :data="data" />
-    <CastList :data="data?.credits?.cast" />
+    <CastList v-if="tabActive === 1" :data="data?.credits?.cast" />
     <firm-categories
       title="More like this"
       :data="recommendation"
@@ -51,7 +51,7 @@ const props = defineProps({
     default: () => {},
   },
   recommendation: {
-    type: Object,
+    type: Array,
     default: () => [],
   },
 });
