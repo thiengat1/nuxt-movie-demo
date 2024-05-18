@@ -9,7 +9,7 @@
         <firm-card :data="item" />
       </div>
     </div>
-    <div v-if="allDataLoaded">All data loaded.</div>
+    <div v-if="allDataLoaded"></div>
   </div>
 </template>
 
